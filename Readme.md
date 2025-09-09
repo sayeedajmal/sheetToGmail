@@ -120,13 +120,7 @@ Click **Start From Scratch** to begin building your financial automation workflo
 
 ![Add Google Sheets] <img src="15.png">
 
-![Google Sheets Selection] <img src="15.png">
-
-### Step 14: Configure Spreadsheet Operation
-
-Select **Create Spreadsheet** operation to configure your Google Sheets connection.
-
-![Spreadsheet Configuration] <img src="16.png">
+![Spreadsheet Selection] <img src="16.png">
 
 ## Google Sheets Integration
 
@@ -134,8 +128,6 @@ Select **Create Spreadsheet** operation to configure your Google Sheets connecti
 
 1. Click **Select Credentials**
 2. Choose **Create New Credentials**
-
-![Create Credentials] <img src="17.png">
 
 ![Credentials Dialog] <img src="18.png">
 
@@ -167,17 +159,17 @@ Click **Select Project** in the top-right corner to ensure your new project is a
 2. Click on the result and click **Enable**
 3. After enabling, click **Manage**
 
-![Google Drive API] <img src="23.png">
+![Google Sheets API] <img src="23.png">
 
 ![Google Sheets API] <img src="24.png">
 
 <!-- ![Enable Sheets API] <img src="25.png"> -->
+
 ### Step 20: Enable Google Drive API
 
 1. Search for **Google Drive API** in the search bar
 2. Click on the API result and click **Enable**
 3. Wait for the API to be enabled
-
 
 ### Step 21: Configure OAuth Consent Screen
 
@@ -187,8 +179,7 @@ Click **Select Project** in the top-right corner to ensure your new project is a
 4. Set audience to **External**
 5. Add your contact email
 6. Check the agreement checkbox and click **Continue**, then **Create**
-
-![OAuth Consent] <img src="26.png">
+   ![OAuth Consent] <img src="25.png">
 
 ### Step 22: Configure Data Access Scopes
 
@@ -196,11 +187,12 @@ Click **Select Project** in the top-right corner to ensure your new project is a
 2. Click **Data Access**
 3. Click **Add or Remove Scopes**
 4. Search for **Google Sheets API**
-5. Check all relevant toggles and click **Update**
+5. Check all relevant toggles and click \*\*Update
 
+![Data Access Scopes] <img src="26.png">
 ![Data Access Scopes] <img src="27.png">
 
-6. Scroll down and click **Save**
+1. Scroll down and click **Save**
 
 ![Save Scopes] <img src="28.png">
 
@@ -228,21 +220,17 @@ Click **Select Project** in the top-right corner to ensure your new project is a
 2. Paste the redirect URL from n8n
 3. Click **Create**
 
-![Redirect URI] <img src="31.png">
-
 ### Step 26: Copy Client Credentials
 
 You'll see a popup with your **Client ID** and **Client Secret**. Copy both values as you'll need them for n8n.
 
-![Client Credentials] <img src="32.png">
+![Client Credentials] <img src="31.png">
 
 ### Step 27: Connect N8N to Google
 
 1. Return to your n8n workflow
 2. Paste the **Client ID** and **Client Secret** into the respective fields
 3. Click **Sign in with Google**
-
-![N8N Google Connection] <img src="33.png">
 
 ### Step 28: Authorize Application
 
@@ -252,13 +240,15 @@ You'll see a popup with your **Client ID** and **Client Secret**. Copy both valu
 4. Scroll down and click **Continue**
 5. You should see "Account is connected"
 
-![Account Connected] <img src="34.png">
+![Connect N8N to Google] <img src="32.png">
 
 ### Step 29: Create Sample Data
 
 1. Navigate to [Google Sheets](https://docs.google.com/spreadsheets/u/0/)
 2. Click on **Blank Spreadsheet**
 3. Add the following sample financial data:
+
+![Google Sheets Creation] <img src="33.png">
 
 ```csv
     Date Category Description Amount Type
@@ -287,7 +277,7 @@ You'll see a popup with your **Client ID** and **Client Secret**. Copy both valu
 5. Select **Sheet1** from the sheet list
 6. Click **Execute Step** at the top
 
-![Execute Sheets] <img src="35.png">
+![Sheets Operation] <img src="34.png">
 
 ## Data Processing & AI Analysis
 
@@ -295,8 +285,6 @@ You'll see a popup with your **Client ID** and **Client Secret**. Copy both valu
 
 1. Click the **plus (+)** symbol after the Google Sheets node
 2. Search for **Code** and select it
-
-![Add Code Node] <img src="36.png">
 
 ### Step 32: Configure JavaScript Filter
 
@@ -347,7 +335,7 @@ Type: row.Type,
 }));
 ```
 
-![JavaScript Code] <img src="37.png">
+![Add Code Node] <img src="35.png">
 
 ## AI Analysis Setup
 
@@ -360,6 +348,7 @@ Type: row.Type,
 
 1. Click **Source** for prompt and select **Define Below**
 2. Add the following comprehensive financial analysis prompt:
+3.
 
 ```prompt
 
@@ -394,31 +383,31 @@ Return only the HTML body. Do not output explanations, comments, or any extra te
 JSON Input: {{JSON.stringify($input.all().map(item => item.json), null, 2)}}
 ```
 
-![AI Prompt Setup] <img src="38.png">
+![Add Code Node] <img src="36.png">
 
 ### Step 35: Configure AI Settings
 
 Click **Settings** and toggle on **Execute Once** to ensure the AI processes all data in a single execution.
-
-![AI Settings] <img src="39.png">
+![Ai Setting] <img src="36b.png">
 
 ### Step 36: Add Groq Chat Model
 
 1. Click the **plus (+)** button in the Chat Model section
 2. Search for **Groq Chat Model** and select it
 
+![ Chat Model] <img src="41.png">
+
 ### Step 37: Create Groq Account
 
 1. Open a new tab and navigate to [Groq Console](https://console.groq.com/home)
 2. Enter your email to create a new account
 
-![Groq Signup] <img src="40.png">
+![Create Account] <img src="37.png">
 
 ### Step 38: Verify Email
 
 Check your Gmail inbox for the Groq verification email and click **Login** to complete the signup process.
-
-![Email Verification] <img src="41.png">
+![Verify Email] <img src="38.png">
 
 ### Step 39: Generate API Key
 
@@ -427,7 +416,7 @@ Check your Gmail inbox for the Groq verification email and click **Login** to co
 3. Enter a display name and click **Submit**
 4. Copy the generated API key
 
-![API Key Creation] <img src="42.png">
+![Generate API Key] <img src="40.png">
 
 ### Step 40: Configure Groq Credentials
 
@@ -436,7 +425,8 @@ Check your Gmail inbox for the Groq verification email and click **Login** to co
 3. Click **Save** - you should see "Connection Successful"
 4. Select the model **deepseek-r1**
 
-![Groq Configuration] <img src="43.png">
+![Groq Signup] <img src="40b.png">
+![Model Selection] <img src="41.png">
 
 ## Gmail Integration
 
@@ -445,14 +435,6 @@ Check your Gmail inbox for the Groq verification email and click **Login** to co
 1. Click the **plus (+)** button after the AI Agent
 2. Search for **Gmail** and select it
 3. Choose **Send a Message** operation
-
-### Step 42: Create Gmail Credentials
-
-1. Click **Select Credentials**
-2. Click **Create New Credentials**
-3. Choose **OAuth2 (Recommended)**
-
-![Gmail Credentials] <img src="44.png">
 
 ### Step 43: Enable Gmail API
 
@@ -469,16 +451,20 @@ Check your Gmail inbox for the Groq verification email and click **Login** to co
 4. Search for **Gmail API** on the right panel
 5. Check all relevant scopes, scroll down and click **Update**
 6. Scroll down and click **Save**
-
-![Gmail OAuth Scopes] <img src="45.png">
+   ![Gmail Scopes] <img src="42.png">
 
 ### Step 45: Configure OAuth Client for Gmail
 
 1. In the left panel, click **Clients**
 2. Select the OAuth client you created earlier
-3. Copy the Client Secret and Client ID
+3. Clic on Add Secret
+4. Copy the Client Secret and Client ID
 
-![Gmail Client Setup] <img src="46.png">
+![Oauth Client] <img src="43.png">
+
+### Step 42: Copy the Client Secret and Client ID
+
+![Gmail Credentials] <img src="44.png">
 
 ### Step 46: Connect Gmail to N8N
 
@@ -490,7 +476,7 @@ Check your Gmail inbox for the Groq verification email and click **Login** to co
 6. Scroll down and click **Continue**
 7. You should see "Your account is connected"
 
-![Gmail Connection] <img src="47.png">
+![Connect Gmail] <img src="45.png">
 
 ### Step 47: Configure Email Settings
 
@@ -502,21 +488,22 @@ Configure the Gmail node with the following settings:
 - **Email Type**: HTML
 - **Message**: ` {{ $json.text.replace(/<think>[\s\S]*?<\/think>/gi, "").replace(/``````/gi, "").trim() }} `
 
-![Email Configuration] <img src="48.png">
+![Gmail Client Setup] <img src="46.png">
 
 ### Step 48: Save and Test Workflow
 
 Click **Save** to save your complete workflow.
 
-![Save Workflow] <img src="49.png">
+![Gmail Connection] <img src="47.png">
 
 ## Workflow Testing
+
+Now Click on Manual Trigger. Node will start processing.
 
 ### Step 49: Check Your Email
 
 Navigate to [Gmail](https://gmail.com) and check your inbox for the automated financial report.
-
-![Email Result] <img src="50.png">
+![Email Result] <img src="48.png">
 
 ## Features
 
@@ -534,14 +521,6 @@ Navigate to [Gmail](https://gmail.com) and check your inbox for the automated fi
 2. **Google API errors**: Verify all APIs are enabled and OAuth scopes are properly configured
 3. **Email not sending**: Check Gmail API permissions and OAuth credentials
 4. **Data not filtering**: Ensure your Google Sheets data follows the correct date format
-
-### Support
-
-For additional support and community discussions, visit the [N8N Community Forum](https://community.n8n.io/).
-
-## License
-
-This project is open source and available under the [MIT License](LICENSE).
 
 ---
 
