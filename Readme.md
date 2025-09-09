@@ -163,8 +163,6 @@ Click **Select Project** in the top-right corner to ensure your new project is a
 
 ![Google Sheets API] <img src="24.png">
 
-<!-- ![Enable Sheets API] <img src="25.png"> -->
-
 ### Step 20: Enable Google Drive API
 
 1. Search for **Google Drive API** in the search bar
@@ -187,7 +185,7 @@ Click **Select Project** in the top-right corner to ensure your new project is a
 2. Click **Data Access**
 3. Click **Add or Remove Scopes**
 4. Search for **Google Sheets API**
-5. Check all relevant toggles and click \*\*Update
+5. Check all relevant toggles and click **Update**
 
 ![Data Access Scopes] <img src="26.png">
 ![Data Access Scopes] <img src="27.png">
@@ -436,14 +434,14 @@ Check your Gmail inbox for the Groq verification email and click **Login** to co
 2. Search for **Gmail** and select it
 3. Choose **Send a Message** operation
 
-### Step 43: Enable Gmail API
+### Step 42: Enable Gmail API
 
 1. Open a new tab and go to [Google Cloud Console](https://console.cloud.google.com/)
 2. Select your project
 3. Search for **Gmail API** and click on it
 4. Click **Enable** and wait for it to complete
 
-### Step 44: Configure Gmail OAuth Scopes
+### Step 43: Configure Gmail OAuth Scopes
 
 1. In the left panel, click **OAuth Consent Screen**
 2. Click **Data Access**
@@ -453,7 +451,7 @@ Check your Gmail inbox for the Groq verification email and click **Login** to co
 6. Scroll down and click **Save**
    ![Gmail Scopes] <img src="42.png">
 
-### Step 45: Configure OAuth Client for Gmail
+### Step 44: Configure OAuth Client for Gmail
 
 1. In the left panel, click **Clients**
 2. Select the OAuth client you created earlier
@@ -462,7 +460,7 @@ Check your Gmail inbox for the Groq verification email and click **Login** to co
 
 ![Oauth Client] <img src="43.png">
 
-### Step 42: Copy the Client Secret and Client ID
+### Step 45: Copy the Client Secret and Client ID
 
 ![Gmail Credentials] <img src="44.png">
 
