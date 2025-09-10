@@ -142,55 +142,6 @@ wget https://raw.githubusercontent.com/pjreddie/darknet/master/cfg/yolov3-tiny.c
 
 ### 🔹 4. Run Detection
 
-Make sure your script is named `Detect.py` and is in the same folder as the weights, config, and coco.names.
-
-```bash
-python Detect.py
-```
-
----
-
-## 6. Example Detect.py (Minimal)
-
-```python
-import cv2
-
-# Load YOLOv3 model
-net = cv2.dnn.readNet("yolov3.weights", "yolov3.cfg")
-
-# Load class labels
-with open("coco.names", "r") as f:
-    classes = [line.strip() for line in f.readlines()]
-
-# Load an image
-img = cv2.imread("image.png")
-height, width = img.shape[:2]
-
-# Create blob (preprocess input for YOLO)
-blob = cv2.dnn.blobFromImage(img, 1/255.0, (416, 416), swapRB=True, crop=False)
-net.setInput(blob)
-
-# Get output layers
-layer_names = net.getUnconnectedOutLayersNames()
-outs = net.forward(layer_names)
-
-# Draw detections
-for out in outs:
-    for detection in out:
-        scores = detection[5:]
-        class_id = scores.argmax()
-        confidence = scores[class_id]
-        if confidence > 0.5:
-            center_x, center_y, w, h = (detection[0:4] * [width, height, width, height]).astype("int")
-            x = int(center_x - w / 2)
-            y = int(center_y - h / 2)
-            cv2.rectangle(img, (x, y), (x + int(w), y + int(h)), (0, 255, 0), 2)
-            cv2.putText(img, f"{classes[class_id]} {confidence:.2f}", (x, y - 5),
-                        cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
-
-cv2.imshow("Detection", img)
-cv2.waitKey(0)
-cv2.destroyAllWindows()
-```
+Make sure your script is named `Detect.py` and is in the same folder as the weights, config, and coco.names
 
 ---
