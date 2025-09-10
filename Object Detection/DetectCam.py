@@ -2,9 +2,9 @@ import cv2
 import numpy as np
 
 # ------------------------------
-# Load YOLOv3-tiny model
+# Load YOLOv3 model
 # ------------------------------
-net = cv2.dnn.readNet("yolov3-tiny.weights", "yolov3-tiny.cfg")
+net = cv2.dnn.readNet("yolov3.weights", "yolov3.cfg")
 
 # Load COCO class labels
 with open("coco.names", "r") as f:
@@ -75,14 +75,12 @@ while True:
                         cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
 
     # Display the resulting frame
-    cv2.imshow("YOLOv3-Tiny Camera Detection", frame)
+    cv2.imshow("YOLOv3 Camera Detection", frame)
 
     # Exit on pressing 'q'
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 
-# ------------------------------
-# Release resources
-# ------------------------------
+
 cap.release()
 cv2.destroyAllWindows()
