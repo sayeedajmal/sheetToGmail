@@ -18,10 +18,14 @@ output_layers = [layer_names[i - 1] for i in net.getUnconnectedOutLayers()]
 # Open webcam (0 = default camera)
 # ------------------------------
 cap = cv2.VideoCapture(0)
+if not cap.isOpened():
+    print("Error: Could not open webcam.")
+    exit()
 
 while True:
     ret, frame = cap.read()
     if not ret:
+        print("Failed to grab frame")
         break
 
     height, width, _ = frame.shape
@@ -34,34 +38,43 @@ while True:
     outs = net.forward(output_layers)
 
     # Collect detections
-    boxes, confidences, class_ids = [], [], []
+    boxes = []
+    confidences = []
+    class_ids = []
+
     for out in outs:
         for detection in out:
             scores = detection[5:]
             class_id = np.argmax(scores)
             confidence = scores[class_id]
+
             if confidence > 0.5:
-                center_x, center_y, w, h = (detection[0:4] * np.array([width, height, width, height])).astype('int')
+                center_x = int(detection[0] * width)
+                center_y = int(detection[1] * height)
+                w = int(detection[2] * width)
+                h = int(detection[3] * height)
                 x = int(center_x - w / 2)
                 y = int(center_y - h / 2)
-                boxes.append([x, y, int(w), int(h)])
+
+                boxes.append([x, y, w, h])
                 confidences.append(float(confidence))
                 class_ids.append(class_id)
 
     # Non-max suppression (remove overlapping boxes)
-    indexes = cv2.dnn.NMSBoxes(boxes, confidences, 0.5, 0.4)
+    indexes = cv2.dnn.NMSBoxes(boxes, confidences, score_threshold=0.5, nms_threshold=0.4)
 
     # Draw detections
     if len(indexes) > 0:
         for i in indexes.flatten():
             x, y, w, h = boxes[i]
-            label = str(classes[class_ids[i]])
-            confidence = str(round(confidences[i], 2))
+            label = classes[class_ids[i]]
+            conf = confidences[i]
+
             cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
-            cv2.putText(frame, f"{label} {confidence}", (x, y - 5), 
+            cv2.putText(frame, f"{label} {conf:.2f}", (x, y - 10),
                         cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
 
-    # Show the frame
+    # Display the resulting frame
     cv2.imshow("YOLOv3-Tiny Camera Detection", frame)
 
     # Exit on pressing 'q'
