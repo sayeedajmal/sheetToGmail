@@ -136,7 +136,7 @@ wget https://pjreddie.com/media/files/yolov3.weights
 ✅ If you want a lightweight version, you can also use **YOLOv3-tiny** (\~34 MB).
 
 ```bash
-wget https://pjreddie.com/media/files/yolov3-tiny.weights
+wget https://sourceforge.net/projects/yolov3.mirror/files/v8/yolov3-tiny.weights/download
 wget https://raw.githubusercontent.com/pjreddie/darknet/master/cfg/yolov3-tiny.cfg
 ```
 
