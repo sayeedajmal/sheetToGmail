@@ -12,6 +12,7 @@ __pycache__/
 .pyo
 .DS_Store
 .env
+.venv
 .env.example
 .dist
 .build
