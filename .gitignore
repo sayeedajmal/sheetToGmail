@@ -51,3 +51,4 @@ yolov3/weights/yolov3spp.pt
 Object Detection/coco.names
 Object Detection/result.jpg
 Object Detection/yolov3.cfg
+Object Detection/yolov3.weights
